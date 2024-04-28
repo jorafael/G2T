@@ -1,1 +1,1 @@
-# CliqueProblem
+# Graph Theory Tool for Java
