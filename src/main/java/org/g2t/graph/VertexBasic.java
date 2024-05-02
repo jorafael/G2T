@@ -1,13 +1,13 @@
-package br.ufpi.paa.graph;
+package org.g2t.graph;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class DefaultVertex implements Vertex{
+public class VertexBasic implements Vertex{
     private String value;
     private ArrayList<Edge> edges;
 
-    public DefaultVertex(String value) {
+    public VertexBasic(String value) {
         setValue(value);
     }
 
@@ -32,7 +32,9 @@ public class DefaultVertex implements Vertex{
         this.edges = edges;
     }
 
-//    public void addEdge(String)
+ /*   public void addEdge(String){
+
+    }*/
 
     @Override
     public String toString() {
@@ -43,7 +45,7 @@ public class DefaultVertex implements Vertex{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DefaultVertex that = (DefaultVertex) o;
+        VertexBasic that = (VertexBasic) o;
         return value.equals(that.value);
     }
 

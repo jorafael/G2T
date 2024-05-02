@@ -1,4 +1,4 @@
-package br.ufpi.paa.graph;
+package org.g2t.graph;
 
 public interface Vertex {
     public String getValue();

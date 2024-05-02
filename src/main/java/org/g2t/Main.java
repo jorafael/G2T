@@ -1,7 +1,7 @@
-package br.ufpi.paa;
+package org.g2t;
 
-import br.ufpi.paa.graph.GraphUnweighted;
-import br.ufpi.paa.graph.Graph;
+import org.g2t.graph.Graph;
+import org.g2t.graph.GraphBasic;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +13,7 @@ public class Main {
         String v3 = "v3";
         String v4 = "v4";
 
-        Graph g = new GraphUnweighted();
+        GraphBasic g = new GraphBasic();
 
         // add the vertices
         g.addVertex(v1);
@@ -21,10 +21,12 @@ public class Main {
         g.addVertex(v3);
         g.addVertex(v4);
 
+        g.printVertexes();
+
 //        https://www.altcademy.com/blog/compute-the-maximum-clique-in-a-graph/
         // add edges to create a circuit
-        g.addEdge(v1, v2);
-        g.addEdge(v2, v3);
+//        g.addEdge(v1, v2);
+//        g.addEdge(v2, v3);
 //        g.addEdge(v3, v4);
 //        g.addEdge(v4, v1);
     }

@@ -1,4 +1,4 @@
-package br.ufpi.paa.util;
+package org.g2t.util;
 
 import java.util.Random;
 

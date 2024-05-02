@@ -1,18 +1,12 @@
-package br.ufpi.paa.graph;
+package org.g2t.graph;
 
-public class DefaultEdge implements Edge{
+public class EdgeBasic implements Edge{
     private Vertex originVertex;
     private Vertex destinationVertex;
-    private Integer weight;
 
-    public DefaultEdge(Vertex originVertex, Vertex destinationVertex) {
-        this(originVertex, destinationVertex, null);
-    }
-
-    public DefaultEdge(Vertex originVertex, Vertex destinationVertex, Integer weight) {
+    public EdgeBasic(Vertex originVertex, Vertex destinationVertex) {
         this.originVertex = originVertex;
         this.destinationVertex = destinationVertex;
-        this.weight = weight;
     }
 
     public Vertex getOriginVertex() {
@@ -21,10 +15,6 @@ public class DefaultEdge implements Edge{
 
     public Vertex getDestinationVertex() {
         return destinationVertex;
-    }
-
-    public Integer getWeight() {
-        return weight;
     }
 
     public void setDestinationVertex(Vertex defaultVertex2) {
