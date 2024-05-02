@@ -1,34 +1,31 @@
 package org.g2t;
 
 import org.g2t.graph.Graph;
-import org.g2t.graph.GraphBasic;
 
 public class Main {
     public static void main(String[] args) {
-        buildGraph();
+        buildGraphExample();
     }
-    public static void buildGraph() {
-        String v1 = "v1";
-        String v2 = "v2";
-        String v3 = "v3";
-        String v4 = "v4";
+    public static Graph buildGraphExample() {
+        String[] vertices = new String[]{"A", "B", "C", "D", "E", "F", "G", "H"};
 
-        GraphBasic g = new GraphBasic();
+        String arestas[][] = new String[][]{
+                {"A", "B"}, {"A", "C"}, {"A", "D"}, {"B", "C"}, {"B", "D"}, {"B", "E"},
+                {"C", "D"}, {"D", "E"}, {"E", "F"}, {"F", "G"}, {"F", "H"}, {"G", "H"}
+        };
+        Graph graph = new Graph();
 
-        // add the vertices
-        g.addVertex(v1);
-        g.addVertex(v2);
-        g.addVertex(v3);
-        g.addVertex(v4);
+        graph.addVerticesFromArray(vertices);
+        graph.addEdgesFromArray(arestas);
+        graph.printVertices();
+        graph.printEdges();
+        graph.printVerticesWithNeighborhoods();
 
-        g.printVertexes();
+        return graph;
+    }
 
-//        https://www.altcademy.com/blog/compute-the-maximum-clique-in-a-graph/
-        // add edges to create a circuit
-//        g.addEdge(v1, v2);
-//        g.addEdge(v2, v3);
-//        g.addEdge(v3, v4);
-//        g.addEdge(v4, v1);
+    public static void cliqueRun(Graph graph){
+
     }
 }
 
