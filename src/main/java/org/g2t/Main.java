@@ -1,6 +1,10 @@
 package org.g2t;
 
 import org.g2t.graph.Graph;
+import org.g2t.graph.Vertex;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,11 +25,13 @@ public class Main {
         graph.printEdges();
         graph.printVerticesWithNeighborhoods();
 
+        List<List<Vertex>> cliques = graph.findCliques();
+        System.out.println("Cliques: " + cliques.size());
+        for (List<Vertex> clique : cliques) {
+            System.out.println(clique);
+        }
+
         return graph;
-    }
-
-    public static void cliqueRun(Graph graph){
-
     }
 }
 

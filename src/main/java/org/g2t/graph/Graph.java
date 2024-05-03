@@ -1,6 +1,9 @@
 package org.g2t.graph;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class Graph {
     private ArrayList<Vertex> vertices;
@@ -9,6 +12,10 @@ public class Graph {
     public Graph() {
         this.vertices = new ArrayList<>();
         this.edges = new ArrayList<>();
+    }
+
+    public int verticesSize(){
+        return vertices.size();
     }
 
     public ArrayList<Vertex> getVertices() {
@@ -85,23 +92,47 @@ public class Graph {
         vertices.get(originVertexIndex).addEdge(vertices.get(destinatioVertexIndex));
         vertices.get(destinatioVertexIndex).addEdge(vertices.get(originVertexIndex));
 
-//        Vertex candidateVertex = new VertexBasic(vertexValue);
-//        vertices.add(candidateVertex);
-
-
         return edge;
     }
 
-/*
-
-    public ArrayList<Edge> getEdges() {
-        return edges;
+    private boolean isClique(List<Vertex> subset) {
+        for (int i = 0; i < subset.size(); i++) {
+            Vertex current = subset.get(i);
+            for (int j = i + 1; j < subset.size(); j++) {
+                if (!current.isNeighborhood(subset.get(j))) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
-    public void setEdges(ArrayList<Edge> edges) {
-        this.edges = edges;
+    public List<List<Vertex>> findCliques() {
+        List<List<Vertex>> allCliques = new ArrayList<>();
+        Queue<List<Vertex>> queue = new LinkedList<>();
+        queue.add(new ArrayList<>()); // Inicia com o conjunto vazio
+
+        for (Vertex vertex : vertices) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                List<Vertex> current = queue.poll();
+                List<Vertex> newSubset = new ArrayList<>(current);
+                newSubset.add(vertex);
+                queue.add(current);
+                queue.add(newSubset);
+            }
+        }
+
+        while (!queue.isEmpty()) {
+            List<Vertex> subset = queue.poll();
+            if (subset.size() > 1 && isClique(subset)) {
+                allCliques.add(new ArrayList<>(subset));
+            }
+        }
+
+        return allCliques;
     }
-*/
+
 
     public void printVertices() {
         String string = "{";
@@ -117,7 +148,7 @@ public class Graph {
         String string = "";
         for (int i = 0; i < vertices.size(); i++) {
             string = string + vertices.get(i).getValue() +": {";
-            ArrayList<String> neighborhoods = vertices.get(i).getNeighborhoods();
+            ArrayList<Vertex> neighborhoods = vertices.get(i).getNeighborhoods();
 
             for (int j = 0; j < neighborhoods.size(); j++) {
                 string = string + neighborhoods.get(j) + ((j + 1) == neighborhoods.size() ? "" : ", ");

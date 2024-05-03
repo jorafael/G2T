@@ -23,21 +23,29 @@ public class Vertex {
         this.value = value;
     }
 
-    public Edge addEdge(Vertex destination) {
-
+    public void addEdge(Vertex destination) {
         this.edges.add(new Edge(this, destination));
-        return null;
     }
     public ArrayList<Edge> getEdges() {
         return edges;
     }
 
-    public ArrayList<String> getNeighborhoods(){
-        ArrayList<String> neighborhoos = new ArrayList<>();
-        for (int i = 0; i < edges.size(); i++) {
-            neighborhoos.add(edges.get(i).getDestinationVertex().getValue());
+    public boolean isNeighborhood(Vertex vertex){
+        ArrayList<Vertex> neighborhoods = getNeighborhoods();
+        for (int i = 0; i < neighborhoods.size(); i++) {
+            if(vertex.equals(neighborhoods.get(i))){
+                return true;
+            }
         }
-        return neighborhoos;
+        return false;
+    }
+
+    public ArrayList<Vertex> getNeighborhoods(){
+        ArrayList<Vertex> neighborhoods = new ArrayList<>();
+        for (int i = 0; i < edges.size(); i++) {
+            neighborhoods.add(edges.get(i).getDestinationVertex());
+        }
+        return neighborhoods;
     }
 
     @Override
